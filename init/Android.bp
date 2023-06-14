@@ -1,0 +1,12 @@
+prebuilt_etc {
+    name: "vendor.qti.hardware.iop@2.0-service-disable.rc",
+    src: "vendor.qti.hardware.iop@2.0-service-disable.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+prebuilt_etc {
+    name: "poweropt-service-disable.rc",
+    src: "poweropt-service-disable.rc",
+    sub_dir: "init",
+    vendor: true,
+}

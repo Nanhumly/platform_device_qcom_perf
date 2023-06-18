@@ -25,7 +25,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += libtflite
 
 # Perf Configs
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/platform/$(TARGET_BOARD_PLATFORM),$(TARGET_COPY_OUT_VENDOR)/etc)
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/platform/$(TARGET_MIKU_BOOST_FRAMEWORK_PLATFORM),$(TARGET_COPY_OUT_VENDOR)/etc)
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -51,7 +51,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.qspm.enable=true \
     vendor.power.pasr.enabled=false
 
-ifeq ($(call is-board-platform-in-list, kona lahaina),true)
+ifneq (,$(filter lahaina, $(TARGET_MIKU_BOOST_FRAMEWORK_PLATFORM)))
 PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.beluga.p=0x3 \
     ro.vendor.beluga.c=0x4800 \
@@ -60,12 +60,12 @@ PRODUCT_VENDOR_PROPERTIES += \
 endif
 
 # Disable IOP HAL for select platforms.
-ifeq ($(call is-board-platform-in-list, msm8937 msm8953 msm8998 qcs605 sdm660 sdm710),true)
+ifneq (,$(filter sdm660, $(TARGET_MIKU_BOOST_FRAMEWORK_PLATFORM)))
 PRODUCT_PACKAGES += vendor.qti.hardware.iop@2.0-service-disable.rc
 endif
 
 # Disable the poweropt service for <5.4 platforms.
-ifneq ($(call is-board-platform-in-list, lahaina holi),true)
+ifneq (,$(filter sdm660 sm6150, $(TARGET_MIKU_BOOST_FRAMEWORK_PLATFORM)))
 PRODUCT_PACKAGES += poweropt-service-disable.rc
 endif
 

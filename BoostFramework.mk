@@ -60,12 +60,12 @@ PRODUCT_VENDOR_PROPERTIES += \
 endif
 
 # Disable IOP HAL for select platforms.
-ifneq (,$(filter sdm660, $(TARGET_MIKU_BOOST_FRAMEWORK_PLATFORM)))
+ifneq (,$(filter msm8998 sdm660, $(TARGET_MIKU_BOOST_FRAMEWORK_PLATFORM)))
 PRODUCT_PACKAGES += vendor.qti.hardware.iop@2.0-service-disable.rc
 endif
 
 # Disable the poweropt service for <5.4 platforms.
-ifneq (,$(filter sdm660 sm6150, $(TARGET_MIKU_BOOST_FRAMEWORK_PLATFORM)))
+ifneq (,$(filter msm8998 sdm660 sm6150, $(TARGET_MIKU_BOOST_FRAMEWORK_PLATFORM)))
 PRODUCT_PACKAGES += poweropt-service-disable.rc
 endif
 
